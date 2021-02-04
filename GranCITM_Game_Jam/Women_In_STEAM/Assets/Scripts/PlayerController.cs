@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     }
 
     [HideInInspector] public PLAYER_STATE player_state = PLAYER_STATE.FALLING;
+    public Animator         Anim;
 
     public float            m_speed             = 1.0f;
     public float            m_jump_force        = 1.0f;
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private Vector2         jump_velocity       = Vector2.zero;
     private float           jump_time_counter   = 0.0f;
     private bool            normal_gravity      = true;
+    private bool            jump_released       = false;
 
     // --- DEBUG ---
     private bool            debug_movement      = false;
@@ -66,11 +68,12 @@ public class PlayerController : MonoBehaviour
 
     void StartJump()
     {
-        jump_velocity = Vector2.up * m_jump_force * Time.deltaTime;
+        jump_velocity = Vector2.up * m_jump_force * /*Time.deltaTime*/ 0.016f;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.velocity = jump_velocity;
+            Anim.SetBool("Jumping", true);
             player_state = PLAYER_STATE.JUMPING;
         }
     }
@@ -94,23 +97,30 @@ public class PlayerController : MonoBehaviour
 
     void EndJump()
     {
-        if (rb.velocity.y > 0.0f && normal_gravity)
+        if (/*rb.velocity.y > 0.0f &&*/ normal_gravity)
         {
             rb.gravityScale += 1.0f;
             normal_gravity = false;
         }
-        else
+        //else
+        //{
+        //    if (!normal_gravity)
+        //    {
+        //        rb.gravityScale -= 1.0f;
+        //        normal_gravity = true;
+        //    }
+        //}
+        
+        if (IsCollidingWithGround())
         {
             if (!normal_gravity)
             {
                 rb.gravityScale -= 1.0f;
                 normal_gravity = true;
             }
-        }
-        
-        if (IsCollidingWithGround())
-        {
+
             jump_time_counter = 0.0f;
+            Anim.SetBool("Jumping", false);
             player_state = PLAYER_STATE.GROUNDED;
         }
     }
@@ -153,7 +163,7 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        rb.velocity = new Vector2(direction * m_speed * Time.deltaTime, rb.velocity.y);
+        rb.velocity = new Vector2(direction * m_speed * /*Time.deltaTime*/ 0.016f, rb.velocity.y);
         debug_movement = false;
     }
 }
