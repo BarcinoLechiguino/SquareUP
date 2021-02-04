@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     }
 
     [HideInInspector] public PLAYER_STATE player_state = PLAYER_STATE.FALLING;
+    public Animator         Anim;
 
     public float            m_speed             = 1.0f;
     public float            m_jump_force        = 1.0f;
@@ -71,6 +72,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             rb.velocity = jump_velocity;
+            Anim.SetBool("Jumping", true);
             player_state = PLAYER_STATE.JUMPING;
         }
     }
@@ -111,6 +113,7 @@ public class PlayerController : MonoBehaviour
         if (IsCollidingWithGround())
         {
             jump_time_counter = 0.0f;
+            Anim.SetBool("Jumping", false);
             player_state = PLAYER_STATE.GROUNDED;
         }
     }
