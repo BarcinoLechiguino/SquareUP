@@ -9,11 +9,11 @@ public class GameplayManager : MonoBehaviour
 
     // Framerate Cap
     public float framerate_cap = 60;
-    
+
     // Referents
     public bool region_completed = false;
 
-    // Pickups
+    #region Pickups
     private int pickup_count;
     public int s_container;                     // Amount of points needed to complete Science Sector
     public int t_container;                     // Amount of points needed to complete Technology Sector
@@ -30,6 +30,11 @@ public class GameplayManager : MonoBehaviour
     }
     public Container active_container;
     public ContainerType active_container_type;
+    #endregion
+    #region Terrain
+    public float variation;
+    public float speed;
+    #endregion
 
     #endregion
 
@@ -38,7 +43,7 @@ public class GameplayManager : MonoBehaviour
     {
         //Pickups
         pickup_count = 0;
-        // active_container_type = ContainerType.SCIENCE;
+
         active_container.SelectContainer();
 
         Application.targetFrameRate = 60;
@@ -67,21 +72,21 @@ public class GameplayManager : MonoBehaviour
     private bool CheckCount()
     {
         bool ret = false;
-        
+
         switch (active_container_type)
         {
-            case ContainerType.SCIENCE:     { ret = (pickup_count >= s_container) ? true : false; }     break;
-            case ContainerType.TECHNOLOGY:  { ret = (pickup_count >= t_container) ? true : false; }     break;
-            case ContainerType.ENGINEERING: { ret = (pickup_count >= e_container) ? true : false; }     break;
-            case ContainerType.ART:         { ret = (pickup_count >= a_container) ? true : false; }     break;
-            case ContainerType.MATH:        { ret = (pickup_count >= ma_container) ? true : false; }    break;
-            default:                        { ret = false; }                                            break;
+            case ContainerType.SCIENCE: { ret = (pickup_count >= s_container) ? true : false; } break;
+            case ContainerType.TECHNOLOGY: { ret = (pickup_count >= t_container) ? true : false; } break;
+            case ContainerType.ENGINEERING: { ret = (pickup_count >= e_container) ? true : false; } break;
+            case ContainerType.ART: { ret = (pickup_count >= a_container) ? true : false; } break;
+            case ContainerType.MATH: { ret = (pickup_count >= ma_container) ? true : false; } break;
+            default: { ret = false; } break;
         }
 
         return ret;
     }
 
-    //Regions
+    // Regions
     public void NextRegion()
     {
         if (active_container_type != ContainerType.MATH)
@@ -95,7 +100,5 @@ public class GameplayManager : MonoBehaviour
 
         active_container.SelectContainer();
     }
-
-
     #endregion
 }
