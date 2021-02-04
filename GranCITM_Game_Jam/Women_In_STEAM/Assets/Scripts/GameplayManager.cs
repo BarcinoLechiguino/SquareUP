@@ -7,16 +7,20 @@ public class GameplayManager : MonoBehaviour
 {
     #region Variables
 
+    // Framerate Cap
+    private float frame_cap = 0.016f;            //Frame Cap in ms
+    private WaitForSecondsRealtime sleep;
+    
     // Referents
     public bool region_completed = false;
 
     // Pickups
     private int pickup_count;
-    public int s_container;     // Amount of points needed to complete Science Sector
-    public int t_container;     // Amount of points needed to complete Technology Sector
-    public int e_container;     // Amount of points needed to complete Engineering Sector
-    public int a_container;     // Amount of points needed to complete Art Sector
-    public int ma_container;     // Amount of points needed to complete Math Sector
+    public int s_container;                     // Amount of points needed to complete Science Sector
+    public int t_container;                     // Amount of points needed to complete Technology Sector
+    public int e_container;                     // Amount of points needed to complete Engineering Sector
+    public int a_container;                     // Amount of points needed to complete Art Sector
+    public int ma_container;                    // Amount of points needed to complete Math Sector
     public enum ContainerType
     {
         SCIENCE,
@@ -46,7 +50,15 @@ public class GameplayManager : MonoBehaviour
         {
             NextRegion();
         }
+
+        StartCoroutine(SleepUntilFrameCap());
     }
+
+    IEnumerator SleepUntilFrameCap()
+    {
+        yield return new WaitForSecondsRealtime(frame_cap - Time.deltaTime);
+    }
+
 
     //Pickups
     public void IncreaseCount()
@@ -62,27 +74,19 @@ public class GameplayManager : MonoBehaviour
 
     private bool CheckCount()
     {
+        bool ret = false;
+        
         switch (active_container_type)
         {
-            case ContainerType.SCIENCE:
-                if (pickup_count >= s_container) { return true; }
-                else { return false; }
-            case ContainerType.TECHNOLOGY:
-                if (pickup_count >= t_container) { return true; }
-                else { return false; }
-            case ContainerType.ENGINEERING:
-                if (pickup_count >= e_container) { return true; }
-                else { return false; }
-            case ContainerType.ART:
-                if (pickup_count >= a_container) { return true; }
-                else { return false; }
-            case ContainerType.MATH:
-                if (pickup_count >= ma_container) { return true; }
-                else { return false; }
-            default:
-                return false;
+            case ContainerType.SCIENCE:     { ret = (pickup_count >= s_container) ? true : false; }     break;
+            case ContainerType.TECHNOLOGY:  { ret = (pickup_count >= t_container) ? true : false; }     break;
+            case ContainerType.ENGINEERING: { ret = (pickup_count >= e_container) ? true : false; }     break;
+            case ContainerType.ART:         { ret = (pickup_count >= a_container) ? true : false; }     break;
+            case ContainerType.MATH:        { ret = (pickup_count >= ma_container) ? true : false; }    break;
+            default:                        { ret = false; }                                            break;
         }
 
+        return ret;
     }
 
     //Regions

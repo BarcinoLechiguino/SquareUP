@@ -17,12 +17,10 @@ public class Container : MonoBehaviour
     #endregion
 
     #region Methods
-    void Start()
+    void Awake()
     {
         manager = FindObjectOfType<GameplayManager>();
         slider = GetComponent<Slider>();
-
-
     }
 
     public void AddValue()
