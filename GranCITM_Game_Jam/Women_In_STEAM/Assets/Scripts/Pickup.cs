@@ -20,11 +20,15 @@ public class Pickup : MonoBehaviour
 
     #region Variables
 
-    GameplayManager manager;
+    private GameplayManager manager;
 
     #endregion
 
     #region Methods
+    void Start()
+    {
+        manager = FindObjectOfType<GameplayManager>();
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
