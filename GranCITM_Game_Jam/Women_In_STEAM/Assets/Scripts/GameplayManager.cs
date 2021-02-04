@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameplayManager : MonoBehaviour
 {
     #region Variables
@@ -15,8 +16,8 @@ public class GameplayManager : MonoBehaviour
     public int t_container;     // Amount of points needed to complete Technology Sector
     public int e_container;     // Amount of points needed to complete Engineering Sector
     public int a_container;     // Amount of points needed to complete Art Sector
-    public int m_container;     // Amount of points needed to complete Math Sector
-    private enum Container
+    public int ma_container;     // Amount of points needed to complete Math Sector
+    public enum ContainerType
     {
         SCIENCE,
         TECHNOLOGY,
@@ -24,8 +25,8 @@ public class GameplayManager : MonoBehaviour
         ART,
         MATH
     }
-    private Container active_container;
-
+    public Container active_container;
+    public ContainerType active_container_type;
 
     #endregion
 
@@ -34,9 +35,20 @@ public class GameplayManager : MonoBehaviour
     {
         //Pickups
         pickup_count = 0;
-        active_container = Container.SCIENCE;
+        // active_container_type = ContainerType.SCIENCE;
+        active_container.SelectContainer();
+
     }
 
+    void Update()
+    {
+        if(Input.GetKeyDown("n"))
+        {
+           NextRegion();
+        }
+    }
+
+    //Pickups
     public void IncreaseCount()
     {
         pickup_count++;
@@ -50,22 +62,22 @@ public class GameplayManager : MonoBehaviour
 
     private bool CheckCount()
     {
-        switch (active_container)
+        switch (active_container_type)
         {
-            case Container.SCIENCE:
+            case ContainerType.SCIENCE:
                 if (pickup_count >= s_container) { return true; }
                 else { return false; }
-            case Container.TECHNOLOGY:
+            case ContainerType.TECHNOLOGY:
                 if (pickup_count >= t_container) { return true; }
                 else { return false; }
-            case Container.ENGINEERING:
+            case ContainerType.ENGINEERING:
                 if (pickup_count >= e_container) { return true; }
                 else { return false; }
-            case Container.ART:
+            case ContainerType.ART:
                 if (pickup_count >= a_container) { return true; }
                 else { return false; }
-            case Container.MATH:
-                if (pickup_count >= m_container) { return true; }
+            case ContainerType.MATH:
+                if (pickup_count >= ma_container) { return true; }
                 else { return false; }
             default:
                 return false;
@@ -73,9 +85,13 @@ public class GameplayManager : MonoBehaviour
 
     }
 
+    //Regions
     public void NextRegion()
     {
-        active_container++;
+        active_container_type++;
+        active_container.SelectContainer();
     } 
+
+    
     #endregion
 }
