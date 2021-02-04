@@ -8,8 +8,7 @@ public class GameplayManager : MonoBehaviour
     #region Variables
 
     // Framerate Cap
-    private float frame_cap = 0.016f;            //Frame Cap in ms
-    private WaitForSecondsRealtime sleep;
+    public float framerate_cap = 60;
     
     // Referents
     public bool region_completed = false;
@@ -42,6 +41,7 @@ public class GameplayManager : MonoBehaviour
         // active_container_type = ContainerType.SCIENCE;
         active_container.SelectContainer();
 
+        Application.targetFrameRate = 60;
     }
 
     void Update()
@@ -50,15 +50,7 @@ public class GameplayManager : MonoBehaviour
         {
             NextRegion();
         }
-
-        StartCoroutine(SleepUntilFrameCap());
     }
-
-    IEnumerator SleepUntilFrameCap()
-    {
-        yield return new WaitForSecondsRealtime(frame_cap - Time.deltaTime);
-    }
-
 
     //Pickups
     public void IncreaseCount()
