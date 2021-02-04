@@ -42,9 +42,9 @@ public class GameplayManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyDown("n"))
+        if (Input.GetKeyDown("n"))
         {
-           NextRegion();
+            NextRegion();
         }
     }
 
@@ -88,10 +88,18 @@ public class GameplayManager : MonoBehaviour
     //Regions
     public void NextRegion()
     {
-        active_container_type++;
-        active_container.SelectContainer();
-    } 
+        if (active_container_type != ContainerType.MATH)
+        {
+            active_container_type++;
+        }
+        else
+        {
+            active_container_type = ContainerType.SCIENCE;
+        }
 
-    
+        active_container.SelectContainer();
+    }
+
+
     #endregion
 }

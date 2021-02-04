@@ -8,27 +8,26 @@ public class PlayerController : MonoBehaviour
     {
         GROUNDED,
         JUMPING,
+        FALLING,
         DEAD
     }
 
-    [HideInInspector] public PLAYER_STATE player_state = PLAYER_STATE.GROUNDED;
+    [HideInInspector] public PLAYER_STATE player_state = PLAYER_STATE.FALLING;
 
     public float            m_speed             = 1.0f;
     public float            m_jump_force        = 1.0f;
     public float            m_jump_time         = 0.35f;
 
     public Transform        m_feet;
-    public float            m_collision_radius  = 0.1f;
+    public float            m_collision_radius  = 0.3f;
     public LayerMask        m_ground_layer;
 
     public LayerMask        m_hazards_layer;
 
     private Rigidbody2D     rb;
-    private BoxCollider2D   col;
-    private float           jump_input_value    = 0.0f;
+    private Collider2D      col;
     private float           jump_time_counter   = 0.0f;
     private float           direction           = 1.0f;
-    private bool            is_grounded         = false;
 
     // --- DEBUG ---
     private bool            debug_movement      = false;
@@ -50,45 +49,71 @@ public class PlayerController : MonoBehaviour
     void InitVariables()
     {
         rb  = GetComponent<Rigidbody2D>();
-        col = GetComponent<BoxCollider2D>();
     }
 
     void Jump()
     {
-        jump_input_value = Input.GetAxis("Jump");
-
         switch (player_state)
         {
-            case PLAYER_STATE.GROUNDED:                                                                         // JUMP FROM GROUND
-                if (Input.GetKeyDown(KeyCode.Space)) 
-                { 
-                    rb.velocity     = Vector2.up * m_jump_force;
-                    player_state    = PLAYER_STATE.JUMPING;
-                }                   
-            break;
-            
-            case PLAYER_STATE.JUMPING:
-                if (Input.GetKey(KeyCode.Space))
-                {
-                    if (jump_time_counter < m_jump_time)
-                    {
-                        rb.velocity         = Vector2.up * m_jump_force;
-                        jump_time_counter   += Time.deltaTime;
-                    }
-                }
-
-                if (Physics2D.OverlapCircle(m_feet.position, m_collision_radius, m_ground_layer) || Input.GetKeyUp(KeyCode.Space))
-                {
-                    jump_time_counter   = 0.0f;
-                    player_state        = PLAYER_STATE.GROUNDED;
-                }
-            break;
-            
-            case PLAYER_STATE.DEAD:
-                // RESET GAME STATE
-                // CHECKPOINTS??
-            break;
+            case PLAYER_STATE.GROUNDED:     { StartJump(); }    break;
+            case PLAYER_STATE.JUMPING:      { ExtendJump(); }   break;
+            case PLAYER_STATE.FALLING:      { EndJump(); }      break;
+            case PLAYER_STATE.DEAD:         { ResetGame(); }    break;
         }
+    }
+
+    void StartJump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.velocity = Vector2.up * m_jump_force * Time.deltaTime;
+            player_state = PLAYER_STATE.JUMPING;
+        }
+    }
+
+    void ExtendJump()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            if (jump_time_counter < m_jump_time)
+            {
+                rb.velocity = Vector2.up * m_jump_force * Time.deltaTime;
+                jump_time_counter += Time.deltaTime;
+            }
+        }
+
+        if ((jump_time_counter > m_jump_time) || Input.GetKeyUp(KeyCode.Space))
+        {
+            player_state = PLAYER_STATE.FALLING;
+        }
+    }
+
+    void EndJump()
+    {
+        if (rb.velocity.y > 0.0f)
+        {
+            rb.gravityScale += 1.0f;
+        }
+        else
+        {
+            rb.gravityScale -= 1.0f;
+        }
+        
+        if (IsCollidingWithGround())
+        {
+            jump_time_counter = 0.0f;
+            player_state = PLAYER_STATE.GROUNDED;
+        }
+    }
+
+    void ResetGame()
+    {
+        // CHECKPOINTS?
+    }
+
+    bool IsCollidingWithGround()
+    {
+        return Physics2D.OverlapCircle(m_feet.position, m_collision_radius, m_ground_layer);
     }
 
     void DebugControls()
@@ -105,6 +130,12 @@ public class PlayerController : MonoBehaviour
             debug_movement = true;
         }
 
+        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            rb.velocity = new Vector2(0.0f, rb.velocity.y);
+            debug_movement = false;
+        }
+
         if (debug_movement)
         {
             Move();
@@ -113,7 +144,7 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        rb.velocity = new Vector2(direction * m_speed, rb.velocity.y);
+        rb.velocity = new Vector2(direction * m_speed * Time.deltaTime, rb.velocity.y);
         debug_movement = false;
     }
 }
