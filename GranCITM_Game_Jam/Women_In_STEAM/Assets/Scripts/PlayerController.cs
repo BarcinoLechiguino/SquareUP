@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.velocity = Vector2.up * m_jump_force;
+            rb.velocity = Vector2.up * m_jump_force * Time.deltaTime;
             player_state = PLAYER_STATE.JUMPING;
         }
     }
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         {
             if (jump_time_counter < m_jump_time)
             {
-                rb.velocity = Vector2.up * m_jump_force;
+                rb.velocity = Vector2.up * m_jump_force * Time.deltaTime;
                 jump_time_counter += Time.deltaTime;
             }
         }
@@ -92,11 +92,11 @@ public class PlayerController : MonoBehaviour
     {
         if (rb.velocity.y > 0.0f)
         {
-            rb.gravityScale = 2.0f;
+            rb.gravityScale += 1.0f;
         }
         else
         {
-            rb.gravityScale = 1.0f;
+            rb.gravityScale -= 1.0f;
         }
         
         if (IsCollidingWithGround())
@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        rb.velocity = new Vector2(direction * m_speed, rb.velocity.y);
+        rb.velocity = new Vector2(direction * m_speed * Time.deltaTime, rb.velocity.y);
         debug_movement = false;
     }
 }
