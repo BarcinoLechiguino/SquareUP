@@ -67,6 +67,10 @@ public class GameplayManager : MonoBehaviour
             pickup_count = 0;
             region_completed = true;
         }
+        else
+        {
+            active_container.AddValue();
+        }
     }
 
     private bool CheckCount()
