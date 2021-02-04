@@ -150,8 +150,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player_state: 0
-  m_speed: 5
-  m_jump_force: 5
+  m_speed: 500
+  m_jump_force: 500
   m_jump_time: 0.4
   m_feet: {fileID: 800568802549761241}
   m_collision_radius: 0.1
