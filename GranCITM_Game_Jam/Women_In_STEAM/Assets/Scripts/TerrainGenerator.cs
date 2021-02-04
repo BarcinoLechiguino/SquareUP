@@ -38,11 +38,11 @@ public class TerrainGenerator : MonoBehaviour
     {
        if (Random.Range(0.0f, 1.0f) < manager.variation)
         {
-            random = Random.Range(1, terrain_prefabs.Length);
+            random = Random.Range(2, terrain_prefabs.Length);
         }
         else
         {
-            random = 0;
+            random = Random.Range(0, 2);
         }
         return random;
     }
