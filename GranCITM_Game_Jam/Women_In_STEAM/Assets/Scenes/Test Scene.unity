@@ -276,10 +276,10 @@ MonoBehaviour:
   m_collision_radius: 0.1
   m_ground_layer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_hazards_layer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
 --- !u!1 &992474043
 GameObject:
   m_ObjectHideFlags: 0
