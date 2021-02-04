@@ -26,11 +26,13 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D     rb;
     private Collider2D      col;
+    private Vector2         jump_velocity       = Vector2.zero;
     private float           jump_time_counter   = 0.0f;
-    private float           direction           = 1.0f;
+    private bool            normal_gravity      = true;
 
     // --- DEBUG ---
     private bool            debug_movement      = false;
+    private float           direction           = 1.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -64,9 +66,11 @@ public class PlayerController : MonoBehaviour
 
     void StartJump()
     {
+        jump_velocity = Vector2.up * m_jump_force * Time.deltaTime;
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            rb.velocity = Vector2.up * m_jump_force;
+            rb.velocity = jump_velocity;
             player_state = PLAYER_STATE.JUMPING;
         }
     }
@@ -77,7 +81,7 @@ public class PlayerController : MonoBehaviour
         {
             if (jump_time_counter < m_jump_time)
             {
-                rb.velocity = Vector2.up * m_jump_force;
+                rb.velocity = jump_velocity;
                 jump_time_counter += Time.deltaTime;
             }
         }
@@ -90,13 +94,18 @@ public class PlayerController : MonoBehaviour
 
     void EndJump()
     {
-        if (rb.velocity.y > 0.0f)
+        if (rb.velocity.y > 0.0f && normal_gravity)
         {
-            rb.gravityScale = 2.0f;
+            rb.gravityScale += 1.0f;
+            normal_gravity = false;
         }
         else
         {
-            rb.gravityScale = 1.0f;
+            if (!normal_gravity)
+            {
+                rb.gravityScale -= 1.0f;
+                normal_gravity = true;
+            }
         }
         
         if (IsCollidingWithGround())
@@ -144,7 +153,7 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
-        rb.velocity = new Vector2(direction * m_speed, rb.velocity.y);
+        rb.velocity = new Vector2(direction * m_speed * Time.deltaTime, rb.velocity.y);
         debug_movement = false;
     }
 }
