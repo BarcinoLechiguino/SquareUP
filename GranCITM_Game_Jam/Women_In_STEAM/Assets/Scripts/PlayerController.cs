@@ -82,13 +82,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            rb.velocity = Vector2.zero;
-            player_state = PLAYER_STATE.FALLING;
-        }
-
-        if ((jump_time_counter > m_jump_time))
+        if ((jump_time_counter > m_jump_time) || Input.GetKeyUp(KeyCode.Space))
         {
             player_state = PLAYER_STATE.FALLING;
         }
