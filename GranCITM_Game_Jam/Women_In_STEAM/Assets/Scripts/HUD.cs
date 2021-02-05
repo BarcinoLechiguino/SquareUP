@@ -8,7 +8,6 @@ public class HUD : MonoBehaviour
 #region Variables
 private GameplayManager manager;
 public Text figure_count;
-
 #endregion
 
 #region Methods
@@ -21,5 +20,7 @@ public Text figure_count;
     {
         figure_count.text = manager.figure_amount.ToString();
     }
+
+ 
 #endregion
 }

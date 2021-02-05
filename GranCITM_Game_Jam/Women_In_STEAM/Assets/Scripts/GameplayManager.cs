@@ -30,7 +30,10 @@ public class GameplayManager : MonoBehaviour
     }
     public Container active_container;
     public ContainerType active_container_type;
+    public DyingText add_text;
+
     #endregion
+
     #region Terrain
     public float variation;
     public float speed;
@@ -71,6 +74,8 @@ public class GameplayManager : MonoBehaviour
     //Pickups
     public void IncreaseCount(int added_count = 1)
     {
+        add_text.gameObject.SetActive(true);
+        add_text.SetValue(added_count);
         AddCount(added_count);
 
         if (CheckCount())
