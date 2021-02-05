@@ -164,6 +164,7 @@ MonoBehaviour:
   active_container_type: 0
   variation: 0.5
   speed: 5
+  max_speed: 6
 --- !u!4 &25182825
 Transform:
   m_ObjectHideFlags: 0
@@ -1224,34 +1225,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1638496014}
     m_Modifications:
-    - target: {fileID: 5602518409016490897, guid: d402b2326bfb83f4bb5d644162aca479, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.6454464
-      objectReference: {fileID: 0}
-    - target: {fileID: 5602518409016490897, guid: d402b2326bfb83f4bb5d644162aca479, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.64544636
-      objectReference: {fileID: 0}
-    - target: {fileID: 5602518409016490897, guid: d402b2326bfb83f4bb5d644162aca479, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.28878883
-      objectReference: {fileID: 0}
-    - target: {fileID: 5602518409016490897, guid: d402b2326bfb83f4bb5d644162aca479, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.28878886
-      objectReference: {fileID: 0}
-    - target: {fileID: 5602518409016490897, guid: d402b2326bfb83f4bb5d644162aca479, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -41.79
-      objectReference: {fileID: 0}
-    - target: {fileID: 5602518409016490897, guid: d402b2326bfb83f4bb5d644162aca479, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 5602518409016490897, guid: d402b2326bfb83f4bb5d644162aca479, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
-      objectReference: {fileID: 0}
     - target: {fileID: 5782820340122940521, guid: d402b2326bfb83f4bb5d644162aca479, type: 3}
       propertyPath: m_RootOrder
       value: 2
