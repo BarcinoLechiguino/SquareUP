@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public PLAYER_STATE player_state = PLAYER_STATE.FALLING;
     public Animator         Anim;
 
-    [HideInInspector] public int            figures_count  = 0;
+    [HideInInspector] public int            figures_count       = 0;
 
     public float                            m_speed             = 1.0f;
     public float                            m_jump_force        = 1.0f;
@@ -65,8 +65,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        active_terrain = terrain_generator.active_terrains[0];
-
         Jump();
 
         SnapBack();
@@ -115,6 +113,8 @@ public class PlayerController : MonoBehaviour
     void GenerateJumpFlag()
     {
         current_jump_flag                       = Instantiate(m_jump_flag, m_feet.position, Quaternion.identity);
+        
+        active_terrain                          = terrain_generator.active_terrains[1];
         current_jump_flag.transform.parent      = active_terrain.transform;
     }
 
@@ -162,6 +162,8 @@ public class PlayerController : MonoBehaviour
             jump_time_counter = 0.0f;
             Anim.SetBool("Jumping", false);
             player_state = PLAYER_STATE.GROUNDED;
+
+            //Debug.Log("JUMP ENDED");
         }
     }
 

@@ -118,10 +118,10 @@ public class FigureController : MonoBehaviour
     {
         transform.position = new Vector3(player_transform.position.x - position_behind_player, transform.position.y, transform.position.z);
 
-        //if (jumping_state != JUMPING_STATE.GROUNDED)
-        //{
-        //    return;
-        //}
+        if (jumping_state != JUMPING_STATE.GROUNDED)
+        {
+            return;
+        }
 
         if (!calculated_new_pos)
         {
@@ -154,7 +154,7 @@ public class FigureController : MonoBehaviour
 
     void UpdateJumpingState()
     {
-        Debug.Log(jumping_state);
+       //Debug.Log(jumping_state);
         switch (jumping_state)
         {
             case JUMPING_STATE.GROUNDED:    { StartFigureJump(); }      break;
@@ -178,7 +178,7 @@ public class FigureController : MonoBehaviour
         jump_time_counter += Time.deltaTime;
         rb.velocity = Vector2.up * m_jump_force * /*Time.deltaTime*/ 0.016f;
 
-        Debug.Log("Time Counter: " + jump_time_counter + "Player Counter: " + player_controller.jump_time_counter);
+        //Debug.Log("Time Counter: " + jump_time_counter + "Player Counter: " + player_controller.jump_time_counter);
 
         if (jump_time_counter > player_controller.jump_time_counter)
         {
