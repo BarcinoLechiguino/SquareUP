@@ -14,7 +14,7 @@ public class GameplayManager : MonoBehaviour
     public bool region_completed = false;
 
     #region Pickups
-    private int pickup_count;
+    public int pickup_count;
     public int s_container;                     // Amount of points needed to complete Science Sector
     public int t_container;                     // Amount of points needed to complete Technology Sector
     public int e_container;                     // Amount of points needed to complete Engineering Sector

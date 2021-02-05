@@ -65,7 +65,7 @@ public class Container : MonoBehaviour
                 Color t_color = new Color(0.0f, 0.7f, 0.3f, 1.0f);  // green
                 container_fill.color = t_color;
                 SetMaxValue(manager.t_container);
-                SetValue(5);
+                ResetSlider();
                 container_shape.SetNativeSize();
                 container_mask.SetNativeSize();
                 break;
