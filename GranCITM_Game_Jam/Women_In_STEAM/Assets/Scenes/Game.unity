@@ -178,6 +178,9 @@ MonoBehaviour:
   max_speed: 6
   sector_title: {fileID: 1268558871}
   flat_background: {fileID: 1106270161}
+  waitingForMentor: 0
+  mentor_delay: 3
+  mentor_timer: 0
   figure_amount: 0
 --- !u!4 &25182825
 Transform:
@@ -215,6 +218,12 @@ MonoBehaviour:
   active_terrains:
   - {fileID: 0}
   - {fileID: 0}
+  mentors:
+  - {fileID: 6610946177059034840, guid: 8bafb70a5c795b94a8ff5036099e92d5, type: 3}
+  - {fileID: 4293426818570459953, guid: 93acfd95e8ea65d46ac4eaf8810e1d5e, type: 3}
+  - {fileID: 3676536537199645441, guid: b72b5bd6fa5ad36448497eb4c1414a06, type: 3}
+  - {fileID: 2458449227433825141, guid: c2450f9963f941041903928782e664f2, type: 3}
+  - {fileID: 328707374222895460, guid: 3a57926948cb13c4c9942d8923e22c04, type: 3}
 --- !u!1001 &109086800
 PrefabInstance:
   m_ObjectHideFlags: 0

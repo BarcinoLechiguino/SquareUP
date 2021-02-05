@@ -39,6 +39,7 @@ public class GameplayManager : MonoBehaviour
     #endregion
 
     #region Terrain
+    private TerrainGenerator generator;
     public float variation;
     public float delay_obstacles;
     public bool obstacles = true;
@@ -49,7 +50,10 @@ public class GameplayManager : MonoBehaviour
     public GameObject sector_title;
     private Text sector_text;
     public SpriteRenderer flat_background;
-
+    public bool waitingForMentor;
+    public float mentor_delay = 3.0f;
+    public float mentor_timer;
+   
     #endregion
 
     #region Figures
@@ -68,6 +72,7 @@ public class GameplayManager : MonoBehaviour
 
         active_container.SelectContainer();
         sector_text = sector_title.GetComponent<Text>();
+        generator = gameObject.GetComponent<TerrainGenerator>();
 
         SetSectorMessage();
         SetBackgroundColor();
@@ -79,7 +84,7 @@ public class GameplayManager : MonoBehaviour
         //Debug
         if (Input.GetKeyDown("n"))
         {
-            NextSector();
+            InitiateMentor();
         }
 
         if (Input.GetKeyDown("p"))
@@ -90,6 +95,19 @@ public class GameplayManager : MonoBehaviour
         if (obstacles)
         {
             obstacles = DelayObstacles();
+        }
+
+        if (waitingForMentor)
+        {
+            if (mentor_timer < 0.0f)
+            {
+                generator.SpawnMentor();
+                waitingForMentor = false;
+            }
+            else
+            {
+                mentor_timer -= 1 * Time.deltaTime;
+            }
         }
 
         UnableSectorMessage();
@@ -119,9 +137,8 @@ public class GameplayManager : MonoBehaviour
         {
             pickup_count = 0;
             region_completed = true;
-            //Function that makes the mentor appear
-            //Place NextSector() inside of it
-            NextSector();
+            InitiateMentor();
+           
         }
         else
         {
@@ -170,7 +187,7 @@ public class GameplayManager : MonoBehaviour
         }
         else
         {
-        
+
             return false;
         }
     }
@@ -226,6 +243,12 @@ public class GameplayManager : MonoBehaviour
         max_speed += 1.0f;
     }
 
+    public void InitiateMentor()
+    {
+        waitingForMentor = true;
+        mentor_timer = mentor_delay;
+    }
+    // Game loop
     public bool CheckScore(int highscore, int score)
     {
         return (score > highscore) ? true : false;
