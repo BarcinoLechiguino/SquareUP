@@ -34,8 +34,12 @@ public class GameplayManager : MonoBehaviour
     #region Terrain
     public float variation;
     public float speed;
+    public float max_speed;
     #endregion
+    #region Sectors
 
+
+    #endregion
     #endregion
 
     #region Methods
@@ -53,24 +57,32 @@ public class GameplayManager : MonoBehaviour
     {
         if (Input.GetKeyDown("n"))
         {
-            NextRegion();
+            NextSector();
         }
+
+        IncreaseSpeed();
     }
 
     //Pickups
-    public void IncreaseCount()
+    public void IncreaseCount(int added_count = 1)
     {
-        pickup_count++;
+        AddCount(added_count);
 
         if (CheckCount())
         {
             pickup_count = 0;
             region_completed = true;
+            NextSector();
         }
         else
         {
             active_container.AddValue();
         }
+    }
+
+    public void AddCount(int points)
+    {
+        pickup_count += points;
     }
 
     private bool CheckCount()
@@ -90,19 +102,39 @@ public class GameplayManager : MonoBehaviour
         return ret;
     }
 
-    // Regions
-    public void NextRegion()
+    // Terrains
+    public void IncreaseSpeed()
+    {
+        if (speed <= max_speed)
+        {
+            speed += 0.02f * Time.deltaTime;
+        }
+    }
+
+    // Sectors
+    public void NextSector()
     {
         if (active_container_type != ContainerType.MATH)
         {
             active_container_type++;
+            IncreaseSectorSpeed();
         }
         else
         {
             active_container_type = ContainerType.SCIENCE;
+            ResetSectorSpeed();
         }
 
         active_container.SelectContainer();
+    }
+
+    public void ResetSectorSpeed()
+    {
+        max_speed = 6.0f;
+    }
+    public void IncreaseSectorSpeed()
+    {
+        max_speed += 1.0f;
     }
     #endregion
 }
