@@ -140,19 +140,11 @@ public class PlayerController : MonoBehaviour
 
     void EndJump()
     {
-        if (/*rb.velocity.y > 0.0f &&*/ normal_gravity)
+        if (normal_gravity)
         {
             rb.gravityScale += 1.0f;
             normal_gravity = false;
         }
-        //else
-        //{
-        //    if (!normal_gravity)
-        //    {
-        //        rb.gravityScale -= 1.0f;
-        //        normal_gravity = true;
-        //    }
-        //}
         
         if (IsCollidingWithGround())
         {
