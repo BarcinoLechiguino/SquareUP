@@ -156,8 +156,10 @@ MonoBehaviour:
   m_feet: {fileID: 278826596021267105}
   ground_collision_radius: 0.1
   player_collision_radius: 0.5
+  mentor_collision_radius: 0.4
   m_jump_force: 350
   m_jump_time: 0.4
+  Anim: {fileID: 278826595955929150}
 --- !u!1 &278826595955929136
 GameObject:
   m_ObjectHideFlags: 0
@@ -251,7 +253,7 @@ Animator:
   m_GameObject: {fileID: 278826595955929136}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b0d42e24ac919f54d9d8162dc6731e23, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1f6b21245e5c3f442b74d548eb405c78, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

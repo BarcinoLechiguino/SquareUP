@@ -186,8 +186,10 @@ MonoBehaviour:
   m_feet: {fileID: 3676536536309988926}
   ground_collision_radius: 0.1
   player_collision_radius: 0.5
+  mentor_collision_radius: 0.4
   m_jump_force: 350
   m_jump_time: 0.4
+  Anim: {fileID: 3895366455531472692}
 --- !u!1001 &2379370534368020457
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -264,5 +266,10 @@ PrefabInstance:
 --- !u!4 &3895366455531472690 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1660183127250993371, guid: 8b8da40c1481a2b44a3a8e3a73138738, type: 3}
+  m_PrefabInstance: {fileID: 2379370534368020457}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3895366455531472692 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1660183127250993373, guid: 8b8da40c1481a2b44a3a8e3a73138738, type: 3}
   m_PrefabInstance: {fileID: 2379370534368020457}
   m_PrefabAsset: {fileID: 0}

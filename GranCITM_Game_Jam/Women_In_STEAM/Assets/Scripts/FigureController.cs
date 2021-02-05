@@ -45,6 +45,7 @@ public class FigureController : MonoBehaviour
 
     private GameplayManager     manager;
 
+    public Animator             Anim;
     // --- PLAYER VARIABLES ---
     private Transform           player_transform;
     private PlayerController    player_controller;
@@ -85,9 +86,9 @@ public class FigureController : MonoBehaviour
 
         switch (figure_state)
         {
-            case FIGURE_STATE.IDLE:     { CheckForPlayerPickUp(); } break;
-            case FIGURE_STATE.ACTIVE:   { FollowPlayer(); }         break;
-            case FIGURE_STATE.DEAD:     { DestroyFigure(); }        break;
+            case FIGURE_STATE.IDLE:     { CheckForPlayerPickUp(); Anim.SetBool("Static", true); } break;
+            case FIGURE_STATE.ACTIVE:   { FollowPlayer(); Anim.SetBool("Static", false); }        break;
+            case FIGURE_STATE.DEAD:     { DestroyFigure(); }                                      break;
         }
     }
 
