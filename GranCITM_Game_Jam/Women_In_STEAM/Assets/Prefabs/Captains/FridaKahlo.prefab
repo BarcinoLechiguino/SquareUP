@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2458449227433825142}
   - component: {fileID: 2458449227433825143}
   - component: {fileID: 2458449227433825140}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: FridaKahlo
   m_TagString: Mentor
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2458449229362839114}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1660183127250993374, guid: 6136768ede3a48741aa2252a86fc455d, type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6136768ede3a48741aa2252a86fc455d, type: 3}
