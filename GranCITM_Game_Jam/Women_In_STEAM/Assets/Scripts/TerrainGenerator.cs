@@ -16,7 +16,7 @@ public class TerrainGenerator : MonoBehaviour
         //DOWN
         active_terrains[0] = Instantiate(terrain_prefabs[0], new Vector3(0.14f, 0.0f, 0.0f), Quaternion.identity);
         active_terrains[1] = Instantiate(terrain_prefabs[0], new Vector3(17.12f, 0.0f, 0.0f), Quaternion.identity);
-   
+
     }
 
     // Update is called once per frame
@@ -36,7 +36,7 @@ public class TerrainGenerator : MonoBehaviour
 
     private int RandomizePrefab()
     {
-       if (Random.Range(0.0f, 1.0f) < manager.variation)
+        if (Random.Range(0.0f, 1.0f) < manager.variation)
         {
             random = Random.Range(2, terrain_prefabs.Length);
         }

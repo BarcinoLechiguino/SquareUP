@@ -149,7 +149,7 @@ public class FigureController : MonoBehaviour
 
     void UpdateJumpingState()
     {
-        Debug.Log(jumping_state);
+       // Debug.Log(jumping_state);
         
         switch (jumping_state)
         {
