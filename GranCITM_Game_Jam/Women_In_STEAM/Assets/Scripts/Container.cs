@@ -58,8 +58,8 @@ public class Container : MonoBehaviour
                 container_fill.color = s_color;
                 SetMaxValue(manager.s_container);
                 ResetSlider();
-                container_shape.SetNativeSize();
-                container_mask.SetNativeSize();
+                //container_shape.SetNativeSize();
+                //container_mask.SetNativeSize();
                 break;
             case GameplayManager.ContainerType.TECHNOLOGY:
                 container_shape.sprite = container_sprites[1];
@@ -69,8 +69,8 @@ public class Container : MonoBehaviour
                 container_fill.color = t_color;
                 SetMaxValue(manager.t_container);
                 ResetSlider();
-                container_shape.SetNativeSize();
-                container_mask.SetNativeSize();
+                //container_shape.SetNativeSize();
+                //container_mask.SetNativeSize();
                 break;
 
             case GameplayManager.ContainerType.ENGINEERING:
@@ -81,8 +81,8 @@ public class Container : MonoBehaviour
                 container_fill.color = e_color;
                 SetMaxValue(manager.e_container);
                 ResetSlider();
-                container_shape.SetNativeSize();
-                container_mask.SetNativeSize();
+                //container_shape.SetNativeSize();
+                //container_mask.SetNativeSize();
                 break;
 
             case GameplayManager.ContainerType.ART:
@@ -93,8 +93,8 @@ public class Container : MonoBehaviour
                 container_fill.color = a_color;
                 SetMaxValue(manager.a_container);
                 ResetSlider();
-                container_shape.SetNativeSize();
-                container_mask.SetNativeSize();
+                //container_shape.SetNativeSize();
+                //container_mask.SetNativeSize();
                 break;
 
             case GameplayManager.ContainerType.MATH:
@@ -105,8 +105,8 @@ public class Container : MonoBehaviour
                 container_fill.color = ma_color;
                 SetMaxValue(manager.ma_container);
                 ResetSlider();
-                container_shape.SetNativeSize();
-                container_mask.SetNativeSize();
+                //container_shape.SetNativeSize();
+                //container_mask.SetNativeSize();
                 break;
 
             default:
