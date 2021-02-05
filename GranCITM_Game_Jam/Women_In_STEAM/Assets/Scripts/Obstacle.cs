@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Obstacle : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class Obstacle : MonoBehaviour
     private GameplayManager manager;
     public Sprite[] obstacle_sprites;
     private SpriteRenderer sprite_renderer;
+    public Text figure_count;
+    public Text figure_needed;
+    public int[] figures_needed = { 1, 3, 5, 8 };
 
     #endregion
 
@@ -56,30 +60,30 @@ public class Obstacle : MonoBehaviour
     public void InitializeObstacle()
     {
         sprite_renderer.sprite = obstacle_sprites[(int)obstacle_level];
+        figure_count.text = manager.figure_amount.ToString();
+        figure_needed.text = figures_needed[(int)obstacle_level].ToString();
     }
     public int GiveReward()
     {
-        switch (obstacle_level)
-        {
-            case Level.EASY:
-                return 1;
-            case Level.INTERMEDIATE:
-                return 3;
-            case Level.HARD:
-                return 5;
-            case Level.EXTREME:
-                return 8;
-            default:
-                return 0;
-        }
+        return figures_needed[(int)obstacle_level];
     }
     public void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Player"))
         {
-            manager.IncreaseCount(GiveReward());
-            gameObject.SetActive(false);
+            if (CheckCount())
+            {
+                manager.IncreaseCount(GiveReward());
+                gameObject.SetActive(false);
+            }
         }
+    }
+
+    public bool CheckCount()
+    {
+        bool ret;
+        ret = (manager.figure_amount >= figures_needed[(int)obstacle_level]) ? true : false;
+        return ret;
     }
     #endregion
 }

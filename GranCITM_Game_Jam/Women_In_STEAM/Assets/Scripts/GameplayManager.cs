@@ -40,6 +40,8 @@ public class GameplayManager : MonoBehaviour
 
 
     #endregion
+
+    public int figure_amount;
     #endregion
 
     #region Methods
@@ -59,10 +61,13 @@ public class GameplayManager : MonoBehaviour
         {
             NextSector();
         }
-
         IncreaseSpeed();
     }
 
+    public void SetFigureCount(int count)
+    {
+        figure_amount = count;
+    }
     //Pickups
     public void IncreaseCount(int added_count = 1)
     {
