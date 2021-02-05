@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private bool            normal_gravity      = true;
     private bool            jump_released       = false;
 
+    private GameplayManager manager;
     // --- DEBUG ---
     private bool            debug_movement      = false;
     private float           direction           = 1.0f;
@@ -51,11 +52,14 @@ public class PlayerController : MonoBehaviour
         Jump();
 
         DebugControls();
+        
+        manager.SetFigureCount(figures_count);
     }
 
     void InitVariables()
     {
         rb  = GetComponent<Rigidbody2D>();
+        manager = FindObjectOfType<GameplayManager>();
     }
 
     void Jump()
@@ -130,12 +134,21 @@ public class PlayerController : MonoBehaviour
 
     void ResetGame()
     {
-        // CHECKPOINTS?
+        // CHECKPOINTS? no 
+        manager.GameOver();
     }
 
     bool IsCollidingWithGround()
     {
         return Physics2D.OverlapCircle(m_feet.position, m_collision_radius, m_ground_layer);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Respawn"))
+        {
+            player_state = PLAYER_STATE.DEAD;
+        }
     }
 
     public void AddFigure()

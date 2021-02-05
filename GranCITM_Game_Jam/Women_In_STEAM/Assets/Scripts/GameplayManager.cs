@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class GameplayManager : MonoBehaviour
@@ -14,7 +15,8 @@ public class GameplayManager : MonoBehaviour
     public bool region_completed = false;
 
     #region Pickups
-    private int pickup_count;
+    public int pickup_count;
+    public int global_count;
     public int s_container;                     // Amount of points needed to complete Science Sector
     public int t_container;                     // Amount of points needed to complete Technology Sector
     public int e_container;                     // Amount of points needed to complete Engineering Sector
@@ -30,7 +32,10 @@ public class GameplayManager : MonoBehaviour
     }
     public Container active_container;
     public ContainerType active_container_type;
+    public DyingText add_text;
+
     #endregion
+
     #region Terrain
     public float variation;
     public float speed;
@@ -38,8 +43,12 @@ public class GameplayManager : MonoBehaviour
     #endregion
     #region Sectors
 
+    #endregion
+    #region Figures
+    public int figure_amount;
 
     #endregion
+
     #endregion
 
     #region Methods
@@ -47,6 +56,7 @@ public class GameplayManager : MonoBehaviour
     {
         //Pickups
         pickup_count = 0;
+        global_count = 0;
 
         active_container.SelectContainer();
 
@@ -55,6 +65,7 @@ public class GameplayManager : MonoBehaviour
 
     void Update()
     {
+        //Debug
         if (Input.GetKeyDown("n"))
         {
             NextSector();
@@ -63,15 +74,31 @@ public class GameplayManager : MonoBehaviour
         IncreaseSpeed();
     }
 
+    public void SetFigureCount(int count)
+    {
+        figure_amount = count;
+        if(CheckScore(Highscore.figure_highscore, figure_amount))
+        {
+           Highscore.figure_highscore = count;
+        }
+    }
     //Pickups
     public void IncreaseCount(int added_count = 1)
     {
+        add_text.gameObject.SetActive(true);
+        add_text.SetValue(added_count);
         AddCount(added_count);
 
+        if(CheckScore(Highscore.highscore, global_count))
+        {
+           Highscore.highscore = global_count;
+        }
         if (CheckCount())
         {
             pickup_count = 0;
             region_completed = true;
+            //Function that makes the mentor appear
+            //Place NextSector() inside of it
             NextSector();
         }
         else
@@ -83,6 +110,7 @@ public class GameplayManager : MonoBehaviour
     public void AddCount(int points)
     {
         pickup_count += points;
+        global_count += points;
     }
 
     private bool CheckCount()
@@ -135,6 +163,15 @@ public class GameplayManager : MonoBehaviour
     public void IncreaseSectorSpeed()
     {
         max_speed += 1.0f;
+    }
+
+    public bool CheckScore(int highscore, int score)
+    {
+       return (score > highscore) ? true : false; 
+    }
+    public void GameOver()
+    {
+        SceneManager.LoadScene(0);
     }
     #endregion
 }
