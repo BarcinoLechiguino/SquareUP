@@ -89,9 +89,9 @@ public class PlayerController : MonoBehaviour
     {
         switch (player_state)
         {
-            case PLAYER_STATE.GROUNDED:     { StartJump(); Anim.SetBool("Falling", false); }    break;
+            case PLAYER_STATE.GROUNDED:     { StartJump(); }    break;
             case PLAYER_STATE.JUMPING:      { ExtendJump(); }   break;
-            case PLAYER_STATE.FALLING:      { EndJump(); Anim.SetBool("Falling", true); Anim.SetBool("Jumping", false); }      break;
+            case PLAYER_STATE.FALLING:      { EndJump(); }      break;
             case PLAYER_STATE.DEAD:         { ResetGame(); }    break;
         }
     }
@@ -132,6 +132,9 @@ public class PlayerController : MonoBehaviour
         if ((jump_time_counter > m_jump_time) || Input.GetKeyUp(KeyCode.Space))
         {
             player_state = PLAYER_STATE.FALLING;
+
+            Anim.SetBool("Jumping", false);
+            Anim.SetBool("Falling", true); 
         }
     }
 
@@ -160,8 +163,10 @@ public class PlayerController : MonoBehaviour
             }
 
             jump_time_counter = 0.0f;
-            Anim.SetBool("Jumping", false);
             player_state = PLAYER_STATE.GROUNDED;
+
+            Anim.SetBool("Jumping", false);
+            Anim.SetBool("Falling", false);
 
             //Debug.Log("JUMP ENDED");
         }
