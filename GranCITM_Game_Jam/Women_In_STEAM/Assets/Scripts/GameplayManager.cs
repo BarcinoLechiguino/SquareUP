@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class GameplayManager : MonoBehaviour
@@ -41,10 +42,12 @@ public class GameplayManager : MonoBehaviour
     #endregion
     #region Sectors
 
+    #endregion
+    #region Figures
+    public int figure_amount;
 
     #endregion
 
-    public int figure_amount;
     #endregion
 
     #region Methods
@@ -70,6 +73,10 @@ public class GameplayManager : MonoBehaviour
     public void SetFigureCount(int count)
     {
         figure_amount = count;
+        if(CheckScore())
+        {
+           Highscore.highscore = count;
+        }
     }
     //Pickups
     public void IncreaseCount(int added_count = 1)
@@ -145,6 +152,15 @@ public class GameplayManager : MonoBehaviour
     public void IncreaseSectorSpeed()
     {
         max_speed += 1.0f;
+    }
+
+    public bool CheckScore()
+    {
+       return (figure_amount > Highscore.highscore) ? true : false; 
+    }
+    public void GameOver()
+    {
+        SceneManager.LoadScene(0);
     }
     #endregion
 }

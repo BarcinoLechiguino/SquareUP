@@ -18,7 +18,7 @@ public Text figure_count;
 
     void Update()
     {
-        figure_count.text = manager.figure_amount.ToString();
+        figure_count.text = manager.figure_amount.ToString("D2");
     }
 
  

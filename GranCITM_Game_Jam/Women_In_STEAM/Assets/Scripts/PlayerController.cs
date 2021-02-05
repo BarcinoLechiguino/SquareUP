@@ -134,12 +134,21 @@ public class PlayerController : MonoBehaviour
 
     void ResetGame()
     {
-        // CHECKPOINTS?
+        // CHECKPOINTS? no 
+        manager.GameOver();
     }
 
     bool IsCollidingWithGround()
     {
         return Physics2D.OverlapCircle(m_feet.position, m_collision_radius, m_ground_layer);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Respawn"))
+        {
+            player_state = PLAYER_STATE.DEAD;
+        }
     }
 
     public void AddFigure()
