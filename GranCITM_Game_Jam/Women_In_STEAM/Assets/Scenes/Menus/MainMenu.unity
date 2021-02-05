@@ -8266,7 +8266,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1529284427
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10795,7 +10795,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1920197403
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10949,7 +10949,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1965686687
 Transform:
   m_ObjectHideFlags: 0
@@ -11428,8 +11428,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 26, y: 149}
-  m_SizeDelta: {x: 558.1081, y: 67.072}
+  m_AnchoredPosition: {x: -0.00000667572, y: 145}
+  m_SizeDelta: {x: 558.1081, y: 101.379}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2128530327
 MonoBehaviour:
@@ -11468,18 +11468,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 22d1af5bc7f4398458eafc568d2efd33, type: 3}
-    m_FontSize: 50
+    m_FontSize: 70
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 50
+    m_MinSize: 0
+    m_MaxSize: 70
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: POV ERES UNA MINITA
+  m_Text: STIGMA
 --- !u!222 &2128530329
 CanvasRenderer:
   m_ObjectHideFlags: 0
