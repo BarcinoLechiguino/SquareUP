@@ -32,12 +32,12 @@ public class PlayerController : MonoBehaviour
     public LayerMask        m_figures_layer;
 
     private TerrainGenerator    terrain_generator;
-    public GameObject          active_terrain;
+    public GameObject           active_terrain;
 
     private Rigidbody2D     rb;
     private Collider2D      col;
     private Vector2         jump_velocity       = Vector2.zero;
-    private float           jump_time_counter   = 0.0f;
+    public float            jump_time_counter   = 0.0f;
     private bool            normal_gravity      = true;
     private bool            jump_released       = false;
 
