@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2458449227433825140}
   m_Layer: 8
   m_Name: FridaKahlo
-  m_TagString: Untagged
+  m_TagString: Mentor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

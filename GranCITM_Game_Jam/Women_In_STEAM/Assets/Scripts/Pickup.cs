@@ -33,9 +33,7 @@ public class Pickup : MonoBehaviour
     }
     void ActivateChild()
     {
-        Debug.Log((int)manager.active_container_type);
-        transform.GetChild((int)manager.active_container_type).gameObject.SetActive(true);
-        
+        transform.GetChild((int)manager.active_container_type).gameObject.SetActive(true);   
     }
     void OnTriggerEnter2D(Collider2D other)
     {

@@ -8,7 +8,9 @@ public class TerrainGenerator : MonoBehaviour
     public List<GameObject> active_terrains;
     private int random;
     private GameplayManager manager;
+    public GameObject[] mentors;
 
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -36,14 +38,28 @@ public class TerrainGenerator : MonoBehaviour
 
     private int RandomizePrefab()
     {
-        if (Random.Range(0.0f, 1.0f) < manager.variation)
+        if (!manager.waitingForMentor)
         {
-            random = Random.Range(2, terrain_prefabs.Length);
+            if (Random.Range(0.0f, 1.0f) < manager.variation)
+            {
+                random = Random.Range(2, terrain_prefabs.Length);
+            }
+            else
+            {
+                random = Random.Range(0, 2);
+            }
+            return random;
         }
         else
         {
-            random = Random.Range(0, 2);
+            return 0;
         }
-        return random;
+
+    }
+
+    public void SpawnMentor()
+    {
+        GameObject mentor = Instantiate(mentors[(int)manager.active_container_type], new Vector3(17.12f, 0.0f, 0.0f), Quaternion.identity);
+        mentor.transform.SetParent(active_terrains[1].transform);
     }
 }
