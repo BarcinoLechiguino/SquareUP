@@ -92,6 +92,14 @@ public class FigureController : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Respawn"))
+        {
+            player_controller.SubtractFigure();
+            Destroy(gameObject);
+        }
+    }
     bool CheckForFigureDeath()
     {
         bool ret = false;
@@ -170,9 +178,9 @@ public class FigureController : MonoBehaviour
        //Debug.Log(jumping_state);
         switch (jumping_state)
         {
-            case JUMPING_STATE.GROUNDED:    { StartFigureJump(); }      break;
-            case JUMPING_STATE.JUMPING:     { ExtendFigureJump(); }     break;
-            case JUMPING_STATE.FALLING:     { EndFigureJump(); }        break;
+            case JUMPING_STATE.GROUNDED:    { StartFigureJump(); Anim.SetBool("Jumping", false); Anim.SetBool("Falling", false); }      break;
+            case JUMPING_STATE.JUMPING:     { ExtendFigureJump(); Anim.SetBool("Jumping", true); }     break;
+            case JUMPING_STATE.FALLING:     { EndFigureJump(); } Anim.SetBool("Jumping", false); Anim.SetBool("Falling", true); break;
         }
     }
 
