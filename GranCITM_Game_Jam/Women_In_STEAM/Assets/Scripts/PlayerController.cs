@@ -23,10 +23,16 @@ public class PlayerController : MonoBehaviour
 
     public Transform        m_feet;
     public float            m_collision_radius  = 0.3f;
+
+    public GameObject                   m_jump_flag;
+    [HideInInspector] public GameObject current_jump_flag;
     
     public LayerMask        m_ground_layer;
     public LayerMask        m_hazards_layer;
     public LayerMask        m_figures_layer;
+
+    private TerrainGenerator    terrain_generator;
+    public GameObject          active_terrain;
 
     private Rigidbody2D     rb;
     private Collider2D      col;
@@ -49,6 +55,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        active_terrain = terrain_generator.active_terrains[0];
+
         Jump();
 
         DebugControls();
@@ -60,6 +68,9 @@ public class PlayerController : MonoBehaviour
     {
         rb  = GetComponent<Rigidbody2D>();
         manager = FindObjectOfType<GameplayManager>();
+
+        terrain_generator   = FindObjectOfType<TerrainGenerator>();
+        active_terrain      = terrain_generator.active_terrains[0];
     }
 
     void Jump()
@@ -82,7 +93,15 @@ public class PlayerController : MonoBehaviour
             rb.velocity = jump_velocity;
             Anim.SetBool("Jumping", true);
             player_state = PLAYER_STATE.JUMPING;
+
+            GenerateJumpFlag();
         }
+    }
+
+    void GenerateJumpFlag()
+    {
+        current_jump_flag                       = Instantiate(m_jump_flag, m_feet.position, Quaternion.identity);
+        current_jump_flag.transform.parent      = active_terrain.transform;
     }
 
     void ExtendJump()

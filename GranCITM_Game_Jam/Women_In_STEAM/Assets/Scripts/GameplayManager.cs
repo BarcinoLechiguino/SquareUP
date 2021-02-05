@@ -79,6 +79,11 @@ public class GameplayManager : MonoBehaviour
             NextSector();
         }
 
+        if (Input.GetKeyDown("p"))
+        {
+            Time.timeScale = (Time.timeScale == 1.0f) ? 0.0f : 1.0f;
+        }
+
         UnableSectorMessage();
         IncreaseSpeed();
     }

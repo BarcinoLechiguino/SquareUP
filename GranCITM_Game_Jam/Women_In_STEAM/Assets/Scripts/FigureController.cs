@@ -19,11 +19,12 @@ public class FigureController : MonoBehaviour
     }
 
     [HideInInspector] public FIGURE_STATE   figure_state    = FIGURE_STATE.IDLE;
-    [HideInInspector] public JUMPING_STATE  jumping_state   = JUMPING_STATE.FALLING;
+    [HideInInspector] public JUMPING_STATE  jumping_state   = JUMPING_STATE.GROUNDED;
 
     public LayerMask            m_ground_layer;
     public LayerMask            m_hazards_layer;
     public LayerMask            m_player_layer;
+    public LayerMask            m_jump_flag_layer;
 
     public Transform            m_feet;
     public float                ground_collision_radius             = 0.1f;
@@ -37,9 +38,6 @@ public class FigureController : MonoBehaviour
     private Vector2             jump_velocity                       = Vector2.zero;
     private float               jump_time_counter                   = 0.0f;
     private bool                jump_released                       = false;
-
-    private TerrainGenerator    terrain_generator;
-    private GameObject          active_terrain;
 
     // --- PLAYER VARIABLES ---
     private Transform           player_transform;
@@ -151,6 +149,8 @@ public class FigureController : MonoBehaviour
 
     void UpdateJumpingState()
     {
+        Debug.Log(jumping_state);
+        
         switch (jumping_state)
         {
             case JUMPING_STATE.GROUNDED:    { StartFigureJump(); }      break;
@@ -161,7 +161,16 @@ public class FigureController : MonoBehaviour
 
     void StartFigureJump()
     {
+        Debug.Log("START JUMP ENSUES");
+        
+        if (Physics2D.OverlapCircle(m_feet.position, 0.3f, m_jump_flag_layer))
+        {
+            Debug.Log("TRIGGERED JUMP FLAG");
 
+            rb.velocity = Vector2.up * m_jump_force * /*Time.deltaTime*/ 0.016f;
+            //Anim.SetBool("Jumping", true);
+            jumping_state = JUMPING_STATE.JUMPING;
+        }
     }
 
     void ExtendFigureJump()
@@ -171,18 +180,16 @@ public class FigureController : MonoBehaviour
 
     void EndFigureJump()
     {
-
+        if (Physics2D.OverlapCircle(m_feet.position, ground_collision_radius, m_ground_layer))
+        {
+            jumping_state = JUMPING_STATE.GROUNDED;
+        }
     }
 
     void InitVariables()
     {
         rb  = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
-
-        //terrain_generator   = FindObjectOfType<TerrainGenerator>();
-        //active_terrain      = terrain_generator.active_terrains[0];
-
-        //transform.parent    = active_terrain.transform;
 
         GameObject player   = GameObject.FindGameObjectWithTag("Player");
         player_transform    = player.transform;
