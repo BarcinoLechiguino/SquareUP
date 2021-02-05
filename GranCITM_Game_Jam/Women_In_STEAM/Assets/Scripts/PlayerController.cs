@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
 
         SnapBack();
 
-        DebugControls();
+        //DebugControls();
         
         manager.SetFigureCount(figures_count);
     }

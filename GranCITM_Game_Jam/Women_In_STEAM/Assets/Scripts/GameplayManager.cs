@@ -16,6 +16,9 @@ public class GameplayManager : MonoBehaviour
     // Referents
     public bool region_completed = false;
 
+    // Difficulty Mode
+    public bool hard_mode = false;
+
     #region Pickups
     public int pickup_count;
     public int global_count;
@@ -228,6 +231,12 @@ public class GameplayManager : MonoBehaviour
             active_container_type = ContainerType.SCIENCE;
             //ResetSectorSpeed();
         }
+
+        if (active_container_type == ContainerType.ENGINEERING)
+        {
+            hard_mode = true;
+        }
+
         IncreaseSectorSpeed();
         active_container.SelectContainer();
         SetSectorMessage();
