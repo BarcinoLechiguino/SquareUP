@@ -147,6 +147,9 @@ MonoBehaviour:
   m_player_layer:
     serializedVersion: 2
     m_Bits: 512
+  m_jump_flag_layer:
+    serializedVersion: 2
+    m_Bits: 2048
   m_feet: {fileID: 278826596021267105}
   ground_collision_radius: 0.1
   player_collision_radius: 0.5
