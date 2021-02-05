@@ -56,7 +56,11 @@ public class GameplayManager : MonoBehaviour
     public bool waitingForMentor;
     public float mentor_delay = 3.0f;
     public float mentor_timer;
-   
+
+    public GameObject popup;
+    public Image popup_image;
+    public Sprite[] heads;
+
     #endregion
 
     #region Figures
@@ -111,6 +115,11 @@ public class GameplayManager : MonoBehaviour
             {
                 mentor_timer -= 1 * Time.deltaTime;
             }
+        }
+
+        if(popup.transform.position.y < -657)
+        {
+            popup.SetActive(false);
         }
 
         UnableSectorMessage();
@@ -205,6 +214,13 @@ public class GameplayManager : MonoBehaviour
         sector_text.color = color;
 
     }
+
+    public void SetSectorPopUp()
+    {
+        popup.SetActive(true);
+        popup_image.sprite = heads[(int)active_container_type];
+    }
+
     public void UnableSectorMessage()
     {
         if (sector_text.color.a <= 0.0f)
@@ -221,6 +237,8 @@ public class GameplayManager : MonoBehaviour
     }
     public void NextSector()
     {
+        SetSectorPopUp();
+
         if (active_container_type != ContainerType.MATH)
         {
             active_container_type++;
