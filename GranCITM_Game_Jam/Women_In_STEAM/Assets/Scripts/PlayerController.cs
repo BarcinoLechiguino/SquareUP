@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public PLAYER_STATE player_state = PLAYER_STATE.FALLING;
     public Animator         Anim;
 
+    [HideInInspector] public int figures_count  = 0;
+
     public float            m_speed             = 1.0f;
     public float            m_jump_force        = 1.0f;
     public float            m_jump_time         = 0.35f;
@@ -49,6 +51,8 @@ public class PlayerController : MonoBehaviour
         Jump();
 
         DebugControls();
+
+        Debug.Log("Figures Following: " + figures_count);
     }
 
     void InitVariables()
@@ -134,6 +138,16 @@ public class PlayerController : MonoBehaviour
     bool IsCollidingWithGround()
     {
         return Physics2D.OverlapCircle(m_feet.position, m_collision_radius, m_ground_layer);
+    }
+
+    public void AddFigure()
+    {
+        ++figures_count;
+    }
+
+    public void SubtractFigure()
+    {
+        --figures_count;
     }
 
     void DebugControls()
