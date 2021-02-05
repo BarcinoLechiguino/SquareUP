@@ -21,9 +21,10 @@ public class PlayerController : MonoBehaviour
 
     public Transform        m_feet;
     public float            m_collision_radius  = 0.3f;
+    
     public LayerMask        m_ground_layer;
-
     public LayerMask        m_hazards_layer;
+    public LayerMask        m_figures_layer;
 
     private Rigidbody2D     rb;
     private Collider2D      col;
