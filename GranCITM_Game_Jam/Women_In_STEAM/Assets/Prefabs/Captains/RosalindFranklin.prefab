@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6610946177059034843}
   - component: {fileID: 6610946177059034842}
   - component: {fileID: 6610946177059034841}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: RosalindFranklin
   m_TagString: Mentor
   m_Icon: {fileID: 0}
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_feet: {fileID: 6610946178485025767}
   ground_collision_radius: 0.1
   player_collision_radius: 0.5
+  mentor_collision_radius: 0.4
   m_jump_force: 350
   m_jump_time: 0.4
 --- !u!1 &6610946178485025766
@@ -167,7 +168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6610946178485025767}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1660183127250993374, guid: 8aa690dff80f3d14299a67fb32f0a6df, type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8aa690dff80f3d14299a67fb32f0a6df, type: 3}

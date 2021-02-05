@@ -113,19 +113,11 @@ public class FigureController : MonoBehaviour
             transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
 
             player_controller.AddFigure();
-        }
-        
-        if (Physics2D.OverlapCircle(transform.position, mentor_collision_radius, m_mentors_layer))
-        {
-            figure_state = FIGURE_STATE.ACTIVE;
 
-            transform.parent = null;
-            transform.position = new Vector3(player_transform.position.x - position_behind_player, player_transform.position.y, player_transform.position.z);
-            transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
-
-            manager.NextSector();
-
-            player_controller.AddFigure();
+            if (gameObject.tag.Equals("Mentor"))
+            {
+                manager.NextSector();
+            }
         }
 
         return ret;
@@ -135,10 +127,10 @@ public class FigureController : MonoBehaviour
     {
         transform.position = new Vector3(player_transform.position.x - position_behind_player, transform.position.y, transform.position.z);
 
-        if (jumping_state != JUMPING_STATE.GROUNDED)
+        /*if (jumping_state != JUMPING_STATE.GROUNDED)
         {
             return;
-        }
+        }*/
 
         if (!calculated_new_pos)
         {

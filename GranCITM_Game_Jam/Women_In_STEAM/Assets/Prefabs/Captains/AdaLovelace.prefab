@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 328707374222895463}
   - component: {fileID: 328707374222895462}
   - component: {fileID: 328707374222895461}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: AdaLovelace
   m_TagString: Mentor
   m_Icon: {fileID: 0}
@@ -156,6 +156,7 @@ MonoBehaviour:
   m_feet: {fileID: 328707376152347739}
   ground_collision_radius: 0.1
   player_collision_radius: 0.5
+  mentor_collision_radius: 0.4
   m_jump_force: 350
   m_jump_time: 0.4
 --- !u!1 &328707376152347738
@@ -167,7 +168,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 328707376152347739}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +258,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1660183127250993374, guid: 0e9a574bff0dcc14baa00ce0268de2e8, type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e9a574bff0dcc14baa00ce0268de2e8, type: 3}
