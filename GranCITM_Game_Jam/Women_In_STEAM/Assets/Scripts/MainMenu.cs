@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
 
     void Update()
     {
-        high_text.text = Highscore.highscore.ToString("D2");
+        high_text.text = Highscore.figure_highscore.ToString("D2") + " / " + Highscore.highscore.ToString("D2");
     }
     public void PlayGame()
     {

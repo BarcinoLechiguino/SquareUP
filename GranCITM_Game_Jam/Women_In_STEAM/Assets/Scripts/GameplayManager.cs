@@ -16,6 +16,7 @@ public class GameplayManager : MonoBehaviour
 
     #region Pickups
     public int pickup_count;
+    public int global_count;
     public int s_container;                     // Amount of points needed to complete Science Sector
     public int t_container;                     // Amount of points needed to complete Technology Sector
     public int e_container;                     // Amount of points needed to complete Engineering Sector
@@ -55,6 +56,7 @@ public class GameplayManager : MonoBehaviour
     {
         //Pickups
         pickup_count = 0;
+        global_count = 0;
 
         active_container.SelectContainer();
 
@@ -63,19 +65,21 @@ public class GameplayManager : MonoBehaviour
 
     void Update()
     {
+        //Debug
         if (Input.GetKeyDown("n"))
         {
             NextSector();
         }
+
         IncreaseSpeed();
     }
 
     public void SetFigureCount(int count)
     {
         figure_amount = count;
-        if(CheckScore())
+        if(CheckScore(Highscore.figure_highscore, figure_amount))
         {
-           Highscore.highscore = count;
+           Highscore.figure_highscore = count;
         }
     }
     //Pickups
@@ -85,10 +89,16 @@ public class GameplayManager : MonoBehaviour
         add_text.SetValue(added_count);
         AddCount(added_count);
 
+        if(CheckScore(Highscore.highscore, global_count))
+        {
+           Highscore.highscore = global_count;
+        }
         if (CheckCount())
         {
             pickup_count = 0;
             region_completed = true;
+            //Function that makes the mentor appear
+            //Place NextSector() inside of it
             NextSector();
         }
         else
@@ -100,6 +110,7 @@ public class GameplayManager : MonoBehaviour
     public void AddCount(int points)
     {
         pickup_count += points;
+        global_count += points;
     }
 
     private bool CheckCount()
@@ -154,9 +165,9 @@ public class GameplayManager : MonoBehaviour
         max_speed += 1.0f;
     }
 
-    public bool CheckScore()
+    public bool CheckScore(int highscore, int score)
     {
-       return (figure_amount > Highscore.highscore) ? true : false; 
+       return (score > highscore) ? true : false; 
     }
     public void GameOver()
     {

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class Highscore : MonoBehaviour
 {
     #region Variables
+    public static int figure_highscore;
     public static int highscore;
     
     #endregion
@@ -14,6 +15,7 @@ public class Highscore : MonoBehaviour
 
     void Start()
     {
+        figure_highscore = 0;
         highscore = 0;
     }
 
