@@ -77,6 +77,8 @@ public class GameplayManager : MonoBehaviour
         sector_text = sector_title.GetComponent<Text>();
         generator = gameObject.GetComponent<TerrainGenerator>();
 
+        hard_mode = false;
+
         SetSectorMessage();
         SetBackgroundColor();
         Application.targetFrameRate = 61;
