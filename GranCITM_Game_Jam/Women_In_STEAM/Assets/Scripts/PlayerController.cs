@@ -51,8 +51,6 @@ public class PlayerController : MonoBehaviour
         Jump();
 
         DebugControls();
-
-        Debug.Log("Figures Following: " + figures_count);
     }
 
     void InitVariables()
