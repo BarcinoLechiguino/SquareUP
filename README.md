@@ -6,55 +6,31 @@ This project was developed by 4 CITM Bachelor's Degree in Video Game Design and 
 
 
 
+## Project's Repository
+
+* [SquareUP Github Repository](https://github.com/BarcinoLechiguino/SquareUP)
+
+
+
 ## Members 
 
-- Francisco Guerrero: [Github](https://github.com/FranGV98) [LinkedIn](https://www.linkedin.com/in/fran-guerrero-vicente-78b359165/) 
+- Francisco Guerrero [Artist]: [Github](https://github.com/FranGV98) [LinkedIn](https://www.linkedin.com/in/fran-guerrero-vicente-78b359165/) 
   
-- Gerard Romeu: [Github](https://github.com/Gromeu2000) [LinkedIn](https://www.linkedin.com/in/gerard-romeu-vidal/) 
+- Gerard Romeu [UI & Audio]: [Github](https://github.com/Gromeu2000) [LinkedIn](https://www.linkedin.com/in/gerard-romeu-vidal/) 
   
-- Guillem Turmo: [Github](https://github.com/Turmo11) [LinkedIn](https://www.linkedin.com/in/gturmo/) 
+- Guillem Turmo [Programmer]: [Github](https://github.com/Turmo11) [LinkedIn](https://www.linkedin.com/in/gturmo/) 
   
-- Angel Gonzalez: [Github](https://github.com/BarcinoLechiguino) [LinkedIn](https://www.linkedin.com/in/angel-gonzalez-jimenez/) 
-
-
-
-## Implementations
-
-- **Francisco Guerrero:** [Artist]
-
-  - s
-  - s
-  - s
-
-  
-
-- **Gerard Romeu:** [Game Designer]
-
-  - s
-  - s
-  - s
-
-  
-
-- **Guillem Turmo:** [Programmer]
-
-  - s
-  - s
-  - s
-
-  
-
-- **Angel Gonzalez:** [Programmer]
-
-  - s
-  - s
-  - s
+- Angel Gonzalez [Programmer]: [Github](https://github.com/BarcinoLechiguino) [LinkedIn](https://www.linkedin.com/in/angel-gonzalez-jimenez/) 
 
 
 
 ## Controls
 
+* **Space Key: ** Jump.
 
+* **Debug Controls:**
+  * **P Key: ** Freezes time.
+  * **N Key:** Skips the current sector and goes to the next.
 
 
 

@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public PLAYER_STATE player_state = PLAYER_STATE.FALLING;
     public Animator         Anim;
 
-    [HideInInspector] public int            figures_count       = 0;
+    [HideInInspector] public int            figures_count       = 1;
 
     public float                            m_speed             = 1.0f;
     public float                            m_jump_force        = 1.0f;
@@ -80,6 +80,8 @@ public class PlayerController : MonoBehaviour
         manager = FindObjectOfType<GameplayManager>();
 
         original_position = transform.position;
+
+        figures_count = 1;
 
         terrain_generator   = FindObjectOfType<TerrainGenerator>();
         active_terrain      = terrain_generator.active_terrains[0];
