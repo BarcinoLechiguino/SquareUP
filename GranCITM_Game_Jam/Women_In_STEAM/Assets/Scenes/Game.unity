@@ -786,7 +786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8470388893378764796, guid: 80314c19ad2c5504ca83939ebd71a069, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5696
+      value: -0.45
       objectReference: {fileID: 0}
     - target: {fileID: 8470388893378764796, guid: 80314c19ad2c5504ca83939ebd71a069, type: 3}
       propertyPath: m_LocalPosition.z
@@ -996,7 +996,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1638496014
 Transform:
   m_ObjectHideFlags: 0
@@ -1263,10 +1263,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain2
       objectReference: {fileID: 0}
-    - target: {fileID: 8908711508606430408, guid: 0ee551d66984e4449afdcca3f94a7bcb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8908711508606430411, guid: 0ee551d66984e4449afdcca3f94a7bcb, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1435,10 +1431,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Terrain3
       objectReference: {fileID: 0}
-    - target: {fileID: 5782820340122940522, guid: d402b2326bfb83f4bb5d644162aca479, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d402b2326bfb83f4bb5d644162aca479, type: 3}
 --- !u!1001 &6028004257338501247
@@ -1495,10 +1487,6 @@ PrefabInstance:
     - target: {fileID: 6028004258600285702, guid: 8dea8f6a25e64294a8f177acd269cd5a, type: 3}
       propertyPath: m_Name
       value: Terrain4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6028004258600285702, guid: 8dea8f6a25e64294a8f177acd269cd5a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dea8f6a25e64294a8f177acd269cd5a, type: 3}
@@ -1561,10 +1549,6 @@ PrefabInstance:
     - target: {fileID: 8048548761574911491, guid: f30cdd5be4d7c2342b9afe0ce48960e1, type: 3}
       propertyPath: m_Name
       value: Terrain1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048548761574911491, guid: f30cdd5be4d7c2342b9afe0ce48960e1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f30cdd5be4d7c2342b9afe0ce48960e1, type: 3}
