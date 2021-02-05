@@ -34,7 +34,11 @@ public class Obstacle : MonoBehaviour
         obstacle_level = GenerateDifficulty();
         InitializeObstacle();
     }
-
+    void Update()
+    {
+        figure_count.text = manager.figure_amount.ToString();
+        figure_needed.text = figures_needed[(int)obstacle_level].ToString();
+    }
     public Level GenerateDifficulty()
     {
         float r = Random.Range(0.0f, 1.0f);
@@ -60,8 +64,6 @@ public class Obstacle : MonoBehaviour
     public void InitializeObstacle()
     {
         sprite_renderer.sprite = obstacle_sprites[(int)obstacle_level];
-        figure_count.text = manager.figure_amount.ToString();
-        figure_needed.text = figures_needed[(int)obstacle_level].ToString();
     }
     public int GiveReward()
     {
