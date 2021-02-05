@@ -39,6 +39,8 @@ public class GameplayManager : MonoBehaviour
 
     #region Terrain
     public float variation;
+    public float delay_obstacles;
+    public bool obstacles = true;
     public float speed;
     public float max_speed;
     #endregion
@@ -82,6 +84,11 @@ public class GameplayManager : MonoBehaviour
         if (Input.GetKeyDown("p"))
         {
             Time.timeScale = (Time.timeScale == 1.0f) ? 0.0f : 1.0f;
+        }
+
+        if (obstacles)
+        {
+            obstacles = DelayObstacles();
         }
 
         UnableSectorMessage();
@@ -153,6 +160,20 @@ public class GameplayManager : MonoBehaviour
         }
     }
 
+    public bool DelayObstacles()
+    {
+        if (delay_obstacles > 0.0f)
+        {
+            delay_obstacles -= 1 * Time.deltaTime;
+            return true;
+        }
+        else
+        {
+        
+            return false;
+        }
+    }
+
     // Sectors
     public void SetSectorMessage()
     {
@@ -174,7 +195,7 @@ public class GameplayManager : MonoBehaviour
     public void SetBackgroundColor()
     {
         Color new_color = new Color(active_container.active_color.r, active_container.active_color.g, active_container.active_color.b, 0.5f);
-       flat_background.color = new_color;
+        flat_background.color = new_color;
 
     }
     public void NextSector()

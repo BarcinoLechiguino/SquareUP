@@ -39,6 +39,8 @@ public class FigureController : MonoBehaviour
     private float               jump_time_counter                   = 0.0f;
     private bool                jump_released                       = false;
 
+    private bool                normal_gravity_scale                = true;
+
     // --- PLAYER VARIABLES ---
     private Transform           player_transform;
     private PlayerController    player_controller;
@@ -61,9 +63,6 @@ public class FigureController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //active_terrain      = terrain_generator.active_terrains[0];
-        //transform.parent    = active_terrain.transform;
-
         UpdateFigureState();
 
         if (figure_state == FIGURE_STATE.ACTIVE)
@@ -107,6 +106,7 @@ public class FigureController : MonoBehaviour
 
             transform.parent    = null;
             transform.position  = new Vector3(player_transform.position.x - position_behind_player, player_transform.position.y, player_transform.position.z);
+            transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
 
             player_controller.AddFigure();
         } 
@@ -117,6 +117,11 @@ public class FigureController : MonoBehaviour
     void FollowPlayer()
     {
         transform.position = new Vector3(player_transform.position.x - position_behind_player, transform.position.y, transform.position.z);
+
+        //if (jumping_state != JUMPING_STATE.GROUNDED)
+        //{
+        //    return;
+        //}
 
         if (!calculated_new_pos)
         {
@@ -150,7 +155,6 @@ public class FigureController : MonoBehaviour
     void UpdateJumpingState()
     {
         Debug.Log(jumping_state);
-        
         switch (jumping_state)
         {
             case JUMPING_STATE.GROUNDED:    { StartFigureJump(); }      break;
@@ -171,13 +175,35 @@ public class FigureController : MonoBehaviour
 
     void ExtendFigureJump()
     {
-        jumping_state = JUMPING_STATE.FALLING;
+        jump_time_counter += Time.deltaTime;
+        rb.velocity = Vector2.up * m_jump_force * /*Time.deltaTime*/ 0.016f;
+
+        Debug.Log("Time Counter: " + jump_time_counter + "Player Counter: " + player_controller.jump_time_counter);
+
+        if (jump_time_counter > player_controller.jump_time_counter)
+        {
+            jump_time_counter = 0.0f;
+            jumping_state = JUMPING_STATE.FALLING;
+        }
     }
 
     void EndFigureJump()
     {
+        if (normal_gravity_scale)
+        {
+            rb.gravityScale += 1.0f;
+            normal_gravity_scale = false;
+        }
+        
         if (Physics2D.OverlapCircle(m_feet.position, ground_collision_radius, m_ground_layer))
         {
+            if (!normal_gravity_scale)
+            {
+                rb.gravityScale -= 1.0f;
+                normal_gravity_scale = true;
+            }
+
+            //Anim.SetBool("Jumping", false);
             jumping_state = JUMPING_STATE.GROUNDED;
         }
     }
@@ -192,5 +218,7 @@ public class FigureController : MonoBehaviour
         player_controller   = player.GetComponent<PlayerController>();
 
         position_behind_player = 0.5f + Random.Range(0.0f, 4.0f);
+
+        transform.eulerAngles = new Vector3(0.0f, 180.0f, 0.0f);
     }
 }
