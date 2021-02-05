@@ -5730,8 +5730,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -767.0835, y: -507.56036}
-  m_SizeDelta: {x: 85.1617, y: 102.3324}
+  m_AnchoredPosition: {x: -529, y: -148}
+  m_SizeDelta: {x: 485.9388, y: 364.4541}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1072912342
 MonoBehaviour:
@@ -5753,7 +5753,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1aeb1fd4300a93d4aa8a7e31b78af3e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b10ccf4fdefed9840b091ce095c3d098, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11253,8 +11253,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -647, y: -189}
-  m_SizeDelta: {x: 85.1617, y: 102.3324}
+  m_AnchoredPosition: {x: -549, y: -174}
+  m_SizeDelta: {x: 120.1196, y: 274.2413}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2117210508
 MonoBehaviour:
@@ -11276,7 +11276,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1aeb1fd4300a93d4aa8a7e31b78af3e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 490452e32b288ce4399cb9b6c3490f7e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11428,8 +11428,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 26, y: 149}
-  m_SizeDelta: {x: 558.1081, y: 67.072}
+  m_AnchoredPosition: {x: -0.00000667572, y: 145}
+  m_SizeDelta: {x: 558.1081, y: 101.379}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2128530327
 MonoBehaviour:
@@ -11468,18 +11468,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 22d1af5bc7f4398458eafc568d2efd33, type: 3}
-    m_FontSize: 50
+    m_FontSize: 70
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 50
+    m_MinSize: 0
+    m_MaxSize: 70
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: POV ERES UNA MINITA
+  m_Text: STIGMA
 --- !u!222 &2128530329
 CanvasRenderer:
   m_ObjectHideFlags: 0
