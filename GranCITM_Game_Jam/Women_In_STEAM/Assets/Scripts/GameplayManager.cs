@@ -8,7 +8,8 @@ using UnityEngine.SceneManagement;
 public class GameplayManager : MonoBehaviour
 {
     #region Variables
-
+    //Particles
+    public List<GameObject> Particle_containers;
     // Framerate Cap
     public float framerate_cap = 60;
 
@@ -140,11 +141,11 @@ public class GameplayManager : MonoBehaviour
 
         switch (active_container_type)
         {
-            case ContainerType.SCIENCE: { ret = (pickup_count >= s_container) ? true : false; } break;
-            case ContainerType.TECHNOLOGY: { ret = (pickup_count >= t_container) ? true : false; } break;
-            case ContainerType.ENGINEERING: { ret = (pickup_count >= e_container) ? true : false; } break;
-            case ContainerType.ART: { ret = (pickup_count >= a_container) ? true : false; } break;
-            case ContainerType.MATH: { ret = (pickup_count >= ma_container) ? true : false; } break;
+            case ContainerType.SCIENCE: { ret = (pickup_count >= s_container) ? true : false; Particle_containers[0].SetActive(true); } break;
+            case ContainerType.TECHNOLOGY: { ret = (pickup_count >= t_container) ? true : false; Particle_containers[1].SetActive(true); Particle_containers[0].SetActive(false); } break;
+            case ContainerType.ENGINEERING: { ret = (pickup_count >= e_container) ? true : false; Particle_containers[2].SetActive(true); Particle_containers[1].SetActive(false); } break;
+            case ContainerType.ART: { ret = (pickup_count >= a_container) ? true : false; Particle_containers[3].SetActive(true); Particle_containers[2].SetActive(false); } break;
+            case ContainerType.MATH: { ret = (pickup_count >= ma_container) ? true : false; Particle_containers[4].SetActive(true); Particle_containers[3].SetActive(false); } break;
             default: { ret = false; } break;
         }
 
