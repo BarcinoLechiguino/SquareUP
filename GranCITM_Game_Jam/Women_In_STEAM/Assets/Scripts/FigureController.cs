@@ -92,6 +92,14 @@ public class FigureController : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Respawn"))
+        {
+            player_controller.SubtractFigure();
+            Destroy(gameObject);
+        }
+    }
     bool CheckForFigureDeath()
     {
         bool ret = false;
@@ -128,10 +136,13 @@ public class FigureController : MonoBehaviour
     {
         transform.position = new Vector3(player_transform.position.x - position_behind_player, transform.position.y, transform.position.z);
 
-        /*if (jumping_state != JUMPING_STATE.GROUNDED)
+        if (!manager.hard_mode)
         {
-            return;
-        }*/
+            if (jumping_state != JUMPING_STATE.GROUNDED)
+            {
+                return;
+            }
+        }
 
         if (!calculated_new_pos)
         {
