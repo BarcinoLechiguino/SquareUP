@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &6107198793374371123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7620253812007693228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58c1ca05afd3e8d4a8c1a3d6563a6215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  figure_state: 0
+  jumping_state: 2
+  m_ground_layer:
+    serializedVersion: 2
+    m_Bits: 0
+  m_hazards_layer:
+    serializedVersion: 2
+    m_Bits: 0
+  m_feet: {fileID: 0}
+  m_jump_force: 0
+  m_jump_time: 0
 --- !u!1001 &7123750551360747884
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25,11 +48,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 800568803272512196, guid: aa4db3dc2d57d034c90b140e9254fb91, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.02
+      value: 5.91
       objectReference: {fileID: 0}
     - target: {fileID: 800568803272512196, guid: aa4db3dc2d57d034c90b140e9254fb91, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.22
+      value: 6.78
       objectReference: {fileID: 0}
     - target: {fileID: 800568803272512196, guid: aa4db3dc2d57d034c90b140e9254fb91, type: 3}
       propertyPath: m_LocalPosition.z
@@ -75,8 +98,14 @@ PrefabInstance:
       propertyPath: m_jump_force
       value: 350
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 800568803272512197, guid: aa4db3dc2d57d034c90b140e9254fb91, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: aa4db3dc2d57d034c90b140e9254fb91, type: 3}
+--- !u!1 &7620253812007693228 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 800568803272512192, guid: aa4db3dc2d57d034c90b140e9254fb91, type: 3}
+  m_PrefabInstance: {fileID: 7123750551360747884}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7620253812007693224 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 800568803272512196, guid: aa4db3dc2d57d034c90b140e9254fb91, type: 3}

@@ -14,7 +14,7 @@ public class TerrainGenerator : MonoBehaviour
     {
         manager = FindObjectOfType<GameplayManager>();
         //DOWN
-        active_terrains[0] = Instantiate(terrain_prefabs[RandomizePrefab()], new Vector3(0.14f, 0.0f, 0.0f), Quaternion.identity);
+        active_terrains[0] = Instantiate(terrain_prefabs[0], new Vector3(0.14f, 0.0f, 0.0f), Quaternion.identity);
         active_terrains[1] = Instantiate(terrain_prefabs[RandomizePrefab()], new Vector3(17.12f, 0.0f, 0.0f), Quaternion.identity);
    
     }
