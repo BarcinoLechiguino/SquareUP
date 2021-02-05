@@ -89,9 +89,9 @@ public class PlayerController : MonoBehaviour
     {
         switch (player_state)
         {
-            case PLAYER_STATE.GROUNDED:     { StartJump(); }    break;
+            case PLAYER_STATE.GROUNDED:     { StartJump(); Anim.SetBool("Falling", false); }    break;
             case PLAYER_STATE.JUMPING:      { ExtendJump(); }   break;
-            case PLAYER_STATE.FALLING:      { EndJump(); }      break;
+            case PLAYER_STATE.FALLING:      { EndJump(); Anim.SetBool("Falling", true); Anim.SetBool("Jumping", false); }      break;
             case PLAYER_STATE.DEAD:         { ResetGame(); }    break;
         }
     }
