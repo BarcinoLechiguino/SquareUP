@@ -67,6 +67,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main_Girl_Character
       objectReference: {fileID: 0}
+    - target: {fileID: 1660183127250993374, guid: 48fd9734bf7c3764e842fdaf73f5d94c, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48fd9734bf7c3764e842fdaf73f5d94c, type: 3}
 --- !u!95 &7609617745518384938 stripped
@@ -81,9 +85,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 800568802549761240, guid: aa4db3dc2d57d034c90b140e9254fb91, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 800568803272512192, guid: aa4db3dc2d57d034c90b140e9254fb91, type: 3}
       propertyPath: m_Name
       value: MainCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 800568803272512192, guid: aa4db3dc2d57d034c90b140e9254fb91, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 800568803272512194, guid: aa4db3dc2d57d034c90b140e9254fb91, type: 3}
       propertyPath: m_Size.x
@@ -148,6 +160,10 @@ PrefabInstance:
     - target: {fileID: 800568803272512197, guid: aa4db3dc2d57d034c90b140e9254fb91, type: 3}
       propertyPath: m_jump_force
       value: 350
+      objectReference: {fileID: 0}
+    - target: {fileID: 800568803272512197, guid: aa4db3dc2d57d034c90b140e9254fb91, type: 3}
+      propertyPath: m_figures_layer.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa4db3dc2d57d034c90b140e9254fb91, type: 3}
