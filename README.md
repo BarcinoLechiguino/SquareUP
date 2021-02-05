@@ -28,6 +28,10 @@ This project was developed by 4 CITM Bachelor's Degree in Video Game Design and 
 
 * **Space Key: ** Jump.
 
+* **Debug Controls:**
+  * **P Key: ** Freezes time.
+  * **N Key:** Skips the current sector and goes to the next.
+
 
 
 ## License
