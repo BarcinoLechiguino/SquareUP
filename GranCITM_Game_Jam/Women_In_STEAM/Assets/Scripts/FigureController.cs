@@ -38,6 +38,9 @@ public class FigureController : MonoBehaviour
     private float               jump_time_counter                   = 0.0f;
     private bool                jump_released                       = false;
 
+    private TerrainGenerator    terrain_generator;
+    private GameObject          active_terrain;
+
     // --- PLAYER VARIABLES ---
     private Transform           player_transform;
     private PlayerController    player_controller;
@@ -60,6 +63,9 @@ public class FigureController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //active_terrain      = terrain_generator.active_terrains[0];
+        //transform.parent    = active_terrain.transform;
+
         UpdateFigureState();
 
         if (figure_state == FIGURE_STATE.ACTIVE)
@@ -100,6 +106,8 @@ public class FigureController : MonoBehaviour
         if (Physics2D.OverlapCircle(transform.position, player_collision_radius, m_player_layer))
         {
             figure_state        = FIGURE_STATE.ACTIVE;
+
+            transform.parent    = null;
             transform.position  = new Vector3(player_transform.position.x - position_behind_player, player_transform.position.y, player_transform.position.z);
 
             player_controller.AddFigure();
@@ -170,6 +178,11 @@ public class FigureController : MonoBehaviour
     {
         rb  = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
+
+        //terrain_generator   = FindObjectOfType<TerrainGenerator>();
+        //active_terrain      = terrain_generator.active_terrains[0];
+
+        //transform.parent    = active_terrain.transform;
 
         GameObject player   = GameObject.FindGameObjectWithTag("Player");
         player_transform    = player.transform;

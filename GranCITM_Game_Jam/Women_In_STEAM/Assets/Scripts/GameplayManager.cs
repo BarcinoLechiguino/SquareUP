@@ -50,7 +50,7 @@ public class GameplayManager : MonoBehaviour
 
         active_container.SelectContainer();
 
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 61;
     }
 
     void Update()
