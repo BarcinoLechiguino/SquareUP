@@ -161,12 +161,8 @@ public class FigureController : MonoBehaviour
 
     void StartFigureJump()
     {
-        Debug.Log("START JUMP ENSUES");
-        
         if (Physics2D.OverlapCircle(m_feet.position, 0.3f, m_jump_flag_layer))
         {
-            Debug.Log("TRIGGERED JUMP FLAG");
-
             rb.velocity = Vector2.up * m_jump_force * /*Time.deltaTime*/ 0.016f;
             //Anim.SetBool("Jumping", true);
             jumping_state = JUMPING_STATE.JUMPING;
@@ -175,7 +171,7 @@ public class FigureController : MonoBehaviour
 
     void ExtendFigureJump()
     {
-
+        jumping_state = JUMPING_STATE.FALLING;
     }
 
     void EndFigureJump()
