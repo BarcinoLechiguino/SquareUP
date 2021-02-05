@@ -2,7 +2,7 @@
 
 ## Description 
 
-This project was developed by 4 CITM Bachelor's Degree in Video Game Design and Development students in the course of 48h for the Gran CITM Game Jam 2021.
+This project was developed by a team of four people for the GranCitm Jam 4th edition - ODS Jam. The theme was Encouraging STEAM related careers for women. Consequently, we thought of a game to draw attention to some of the most important women in each of those fields (Science, Technology, Engineering, Art & Mathematics). There are also two very important messages that we wish to educate, first of all, the many challenges that women had to and still have to face in their professional lives, such as discrimination (pregnancy, misogyny, etc), men taking credit for their achievements, counter-productive and regressive protests, and probably the most iconic one in this context, the well-known glass celiling.  Finally, the last message we want to send is that instead of promoting a competitive environment where Might is right and only the strongest men survive, in order to surpass all of these society-imposed obstacles, cooperation and being united is the key.
 
 
 
