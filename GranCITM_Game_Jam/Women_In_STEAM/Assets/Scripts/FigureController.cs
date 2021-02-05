@@ -25,10 +25,12 @@ public class FigureController : MonoBehaviour
     public LayerMask            m_hazards_layer;
     public LayerMask            m_player_layer;
     public LayerMask            m_jump_flag_layer;
+    public LayerMask            m_mentors_layer;
 
     public Transform            m_feet;
     public float                ground_collision_radius             = 0.1f;
     public float                player_collision_radius             = 0.5f;
+    public float                mentor_collision_radius             = 0.4f;
 
     public float                m_jump_force                        = 350.0f;
     public float                m_jump_time                         = 0.4f;
@@ -40,6 +42,8 @@ public class FigureController : MonoBehaviour
     private bool                jump_released                       = false;
 
     private bool                normal_gravity_scale                = true;
+
+    private GameplayManager     manager;
 
     // --- PLAYER VARIABLES ---
     private Transform           player_transform;
@@ -109,7 +113,20 @@ public class FigureController : MonoBehaviour
             transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
 
             player_controller.AddFigure();
-        } 
+        }
+        
+        if (Physics2D.OverlapCircle(transform.position, mentor_collision_radius, m_mentors_layer))
+        {
+            figure_state = FIGURE_STATE.ACTIVE;
+
+            transform.parent = null;
+            transform.position = new Vector3(player_transform.position.x - position_behind_player, player_transform.position.y, player_transform.position.z);
+            transform.eulerAngles = new Vector3(0.0f, 0.0f, 0.0f);
+
+            manager.NextSector();
+
+            player_controller.AddFigure();
+        }
 
         return ret;
     }
@@ -212,6 +229,8 @@ public class FigureController : MonoBehaviour
     {
         rb  = GetComponent<Rigidbody2D>();
         col = GetComponent<CapsuleCollider2D>();
+
+        manager = FindObjectOfType<GameplayManager>();
 
         GameObject player   = GameObject.FindGameObjectWithTag("Player");
         player_transform    = player.transform;
