@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 
@@ -41,9 +42,13 @@ public class GameplayManager : MonoBehaviour
     public float speed;
     public float max_speed;
     #endregion
-    #region Sectors
+    #region Sectors    
+    public GameObject sector_title;
+    private Text sector_text;
+    public SpriteRenderer flat_background;
 
     #endregion
+
     #region Figures
     public int figure_amount;
 
@@ -59,7 +64,10 @@ public class GameplayManager : MonoBehaviour
         global_count = 0;
 
         active_container.SelectContainer();
+        sector_text = sector_title.GetComponent<Text>();
 
+        SetSectorMessage();
+        SetBackgroundColor();
         Application.targetFrameRate = 61;
     }
 
@@ -71,15 +79,16 @@ public class GameplayManager : MonoBehaviour
             NextSector();
         }
 
+        UnableSectorMessage();
         IncreaseSpeed();
     }
 
     public void SetFigureCount(int count)
     {
         figure_amount = count;
-        if(CheckScore(Highscore.figure_highscore, figure_amount))
+        if (CheckScore(Highscore.figure_highscore, figure_amount))
         {
-           Highscore.figure_highscore = count;
+            Highscore.figure_highscore = count;
         }
     }
     //Pickups
@@ -89,9 +98,9 @@ public class GameplayManager : MonoBehaviour
         add_text.SetValue(added_count);
         AddCount(added_count);
 
-        if(CheckScore(Highscore.highscore, global_count))
+        if (CheckScore(Highscore.highscore, global_count))
         {
-           Highscore.highscore = global_count;
+            Highscore.highscore = global_count;
         }
         if (CheckCount())
         {
@@ -140,20 +149,45 @@ public class GameplayManager : MonoBehaviour
     }
 
     // Sectors
+    public void SetSectorMessage()
+    {
+        sector_title.SetActive(true);
+        sector_text.text = active_container_type.ToString();
+        Color color;
+        color = active_container.active_color;
+        sector_text.color = color;
+
+    }
+    public void UnableSectorMessage()
+    {
+        if (sector_text.color.a <= 0.0f)
+        {
+            sector_title.SetActive(false);
+        }
+    }
+
+    public void SetBackgroundColor()
+    {
+        Color new_color = new Color(active_container.active_color.r, active_container.active_color.g, active_container.active_color.b, 0.5f);
+       flat_background.color = new_color;
+
+    }
     public void NextSector()
     {
         if (active_container_type != ContainerType.MATH)
         {
             active_container_type++;
-            IncreaseSectorSpeed();
+            //IncreaseSectorSpeed();
         }
         else
         {
             active_container_type = ContainerType.SCIENCE;
-            ResetSectorSpeed();
+            //ResetSectorSpeed();
         }
-
+        IncreaseSectorSpeed();
         active_container.SelectContainer();
+        SetSectorMessage();
+        SetBackgroundColor();
     }
 
     public void ResetSectorSpeed()
@@ -167,7 +201,7 @@ public class GameplayManager : MonoBehaviour
 
     public bool CheckScore(int highscore, int score)
     {
-       return (score > highscore) ? true : false; 
+        return (score > highscore) ? true : false;
     }
     public void GameOver()
     {
