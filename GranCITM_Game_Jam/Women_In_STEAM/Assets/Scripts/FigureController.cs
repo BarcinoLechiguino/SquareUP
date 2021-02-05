@@ -92,6 +92,14 @@ public class FigureController : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Respawn"))
+        {
+            player_controller.SubtractFigure();
+            Destroy(gameObject);
+        }
+    }
     bool CheckForFigureDeath()
     {
         bool ret = false;
