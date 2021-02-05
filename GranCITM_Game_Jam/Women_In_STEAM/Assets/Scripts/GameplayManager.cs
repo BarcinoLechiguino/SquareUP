@@ -64,9 +64,9 @@ public class GameplayManager : MonoBehaviour
     }
 
     //Pickups
-    public void IncreaseCount()
+    public void IncreaseCount(int added_count = 1)
     {
-        pickup_count++;
+        AddCount(added_count);
 
         if (CheckCount())
         {
@@ -78,6 +78,11 @@ public class GameplayManager : MonoBehaviour
         {
             active_container.AddValue();
         }
+    }
+
+    public void AddCount(int points)
+    {
+        pickup_count += points;
     }
 
     private bool CheckCount()
